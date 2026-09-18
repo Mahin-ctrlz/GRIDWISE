@@ -1,0 +1,40 @@
+{
+  "scenario_id": "demo-solar-reduction",
+  "operator_notes": [
+    "No discharge from 6 PM until 9 PM."
+
+  ],
+  "hours": [
+    {"hour": 0,  "demand_kwh": 1.2, "solar_kwh": 0.0, "tariff_bdt_per_kwh": 6.0},
+    {"hour": 1,  "demand_kwh": 1.0, "solar_kwh": 0.0, "tariff_bdt_per_kwh": 6.0},
+    {"hour": 2,  "demand_kwh": 0.9, "solar_kwh": 0.0, "tariff_bdt_per_kwh": 6.0},
+    {"hour": 3,  "demand_kwh": 0.9, "solar_kwh": 0.0, "tariff_bdt_per_kwh": 6.0},
+    {"hour": 4,  "demand_kwh": 1.0, "solar_kwh": 0.0, "tariff_bdt_per_kwh": 6.0},
+    {"hour": 5,  "demand_kwh": 1.4, "solar_kwh": 0.1, "tariff_bdt_per_kwh": 6.0},
+    {"hour": 6,  "demand_kwh": 2.0, "solar_kwh": 0.6, "tariff_bdt_per_kwh": 6.0},
+    {"hour": 7,  "demand_kwh": 2.6, "solar_kwh": 1.5, "tariff_bdt_per_kwh": 6.5},
+    {"hour": 8,  "demand_kwh": 3.0, "solar_kwh": 3.0, "tariff_bdt_per_kwh": 7.0},
+    {"hour": 9,  "demand_kwh": 3.2, "solar_kwh": 4.5, "tariff_bdt_per_kwh": 7.5},
+    {"hour": 10, "demand_kwh": 3.1, "solar_kwh": 5.5, "tariff_bdt_per_kwh": 8.0},
+    {"hour": 11, "demand_kwh": 3.0, "solar_kwh": 6.0, "tariff_bdt_per_kwh": 8.5},
+    {"hour": 12, "demand_kwh": 3.0, "solar_kwh": 6.2, "tariff_bdt_per_kwh": 9.0},
+    {"hour": 13, "demand_kwh": 3.2, "solar_kwh": 6.0, "tariff_bdt_per_kwh": 10.0},
+    {"hour": 14, "demand_kwh": 3.4, "solar_kwh": 5.0, "tariff_bdt_per_kwh": 10.5},
+    {"hour": 15, "demand_kwh": 3.6, "solar_kwh": 3.8, "tariff_bdt_per_kwh": 11.0},
+    {"hour": 16, "demand_kwh": 3.8, "solar_kwh": 2.4, "tariff_bdt_per_kwh": 11.5},
+    {"hour": 17, "demand_kwh": 4.0, "solar_kwh": 1.2, "tariff_bdt_per_kwh": 12.0},
+    {"hour": 18, "demand_kwh": 4.2, "solar_kwh": 0.4, "tariff_bdt_per_kwh": 12.5},
+    {"hour": 19, "demand_kwh": 4.0, "solar_kwh": 0.0, "tariff_bdt_per_kwh": 12.0},
+    {"hour": 20, "demand_kwh": 3.6, "solar_kwh": 0.0, "tariff_bdt_per_kwh": 11.0},
+    {"hour": 21, "demand_kwh": 3.0, "solar_kwh": 0.0, "tariff_bdt_per_kwh": 10.0},
+    {"hour": 22, "demand_kwh": 2.2, "solar_kwh": 0.0, "tariff_bdt_per_kwh": 9.0},
+    {"hour": 23, "demand_kwh": 1.6, "solar_kwh": 0.0, "tariff_bdt_per_kwh": 8.0}
+  ],
+  "battery": {
+    "capacity_kwh": 10.0,
+    "initial_energy_kwh": 4.0,
+    "minimum_energy_kwh": 1.0,
+    "max_charge_kwh_per_hour": 3.0,
+    "max_discharge_kwh_per_hour": 3.0
+  }
+}
