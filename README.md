@@ -58,6 +58,14 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 docker build -t gridwise . && docker run --rm -p 8000:8000 gridwise
 ```
 
+# 5. For Docker HUB
+## Docker Deployment
+Run the pre-built API container directly from Docker Hub:
+```bash
+docker run -d -p 8000:8000 --env-file .env mahinctrlz/gridwise-api:latest
+
+##
+
 ## Endpoints
 
 ### `GET /health`
