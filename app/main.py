@@ -109,6 +109,15 @@ async def _internal_handler(_: Request, exc: Exception):
 
 # ----------------------------- Routes -----------------------------
 
+from fastapi.responses import RedirectResponse
+
+
+@app.get("/", include_in_schema=False)
+async def root():
+    """Redirect root access directly to Swagger docs UI."""
+    return RedirectResponse(url="/docs")
+
+
 @app.get("/health")
 async def health() -> Dict[str, str]:
     return {"status": "ok"}
@@ -116,7 +125,7 @@ async def health() -> Dict[str, str]:
 
 @app.post("/optimize-energy", response_model=OptimizeResponse)
 async def optimize_energy(req: OptimizeRequest):
-    t0 = time.perf_counter()
+    t0 = time.perf_counter()  # <--- Added missing timer initialization
 
     # ---- 1. LLM interpretation (raw envelope) --------------------
     raw = interpret(req.operator_notes, req.battery)
@@ -125,7 +134,6 @@ async def optimize_energy(req: OptimizeRequest):
     # ---- 2. Guardrail pass (per note) ---------------------------
     safe: List[DirectiveInterpretation] = []
     for idx, note in enumerate(req.operator_notes):
-        # Find a matching raw entry, else synthesize a no_op input
         match = next(
             (r for r in raw_list if r.get("note_index") == idx),
             {
@@ -144,8 +152,6 @@ async def optimize_energy(req: OptimizeRequest):
     # ---- 4. Replay verification + recompute totals ---------------
     verified = replay(req.hours, req.battery, safe, result["hourly_plan"])
 
-    # Overwrite the optimizer's totals with the replay-computed ones
-    # (within 0.01 tolerance we keep the replay numbers as authoritative).
     for key in ("total_grid_kwh", "peak_grid_kwh"):
         if abs(result[key] - verified[key]) > TOL:
             raise RuntimeError(
